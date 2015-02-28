@@ -15,6 +15,7 @@ set autochdir                    " auto change directory in the new window or ta
 set mousehide                    " auto hide mouse
 set foldmethod=indent            " use fold by indentation
 set cursorline                   " highlight active cursor line
+set t_Co=256                     " enable 256 colors
 
 " If vim is in diff mode, than turn off syntax highlighting, otherwise turn on
 syntax off
@@ -116,6 +117,9 @@ filetype plugin indent on    " required
 "----------------------------------------------------------------------------------------------------------------------
 
 "---------------------------------------SOLARIZED COLORSCHEME----------------------------------------------------------
+" Dark background
+set background=dark
+
 let g:solarized_termcolors = 16
 let g:solarized_termtrans  = 1
 let g:solarized_degrade    = 0
@@ -126,7 +130,6 @@ let g:solarized_contrast   = "high"
 let g:solarized_visibility = "high"
 
 " Colorscheme is solarized dark
-set background=dark
 colorscheme solarized
 "----------------------------------------------------------------------------------------------------------------------
 
