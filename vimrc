@@ -1,37 +1,47 @@
 "---------------------------------------COMMON SETTINGS----------------------------------------------------------------
-set number                          " Show line numbers
-set numberwidth=4                   " Число цифр, выделенных для номеров строк
-set backspace=indent,eol,start      " Для работы Backspace'а
-:fixdel                             " Для работы клавиши Delete
-set hlsearch                        " Подсветка поиска
-set incsearch                       " Incremental search
-set smartindent                     " Включение автоматических отступов
-set autoindent                      " Включение автоматических отступов
-set shiftwidth=4                    " Автоматический отступ при переходе на новую строку
-set softtabstop=4                   " Количество пробелов в <Tab> или при использовании <BS>
-set tabstop=4                       " Количество пробелов в <Tab>, используется для retab
-set expandtab                       " Используем пробелы вместо <Tab>
-set autochdir                       " Текущий каталоге всегда совпадает с содержимым активного окна
-set mousehide                       " Прятать мышку во время ввода текста
-set foldmethod=indent               " Делаем свертку по отступам
-"set foldcolumn=1                    " Ширина колонки для отображения симоволов скрытия блоков кода
-set cursorline                      " Подсветка строки, на которой находится курсор
-"----------------------------------------------------------------------------------------------------------------------
+set number                       " show line numbers
+set numberwidth=4                " count of positions for line numbers
+set backspace=indent,eol,start   " for backspace working on some Linux machines
+:fixdel                          " for Delete key working on some Linux machines
+set hlsearch                     " search highlighting
+set incsearch                    " incremental searching
+set smartindent                  " smart indentation
+set autoindent                   " auto indentation
+set shiftwidth=4                 " auto indentation width for new line move
+set softtabstop=4                " backspace number in the <Tab> or for using <BS>
+set tabstop=4                    " backspace number in the <Tab> at using retab
+set expandtab                    " use backspaces instead <Tab>
+set autochdir                    " auto change directory in the new window or tab
+set mousehide                    " auto hide mouse
+set foldmethod=indent            " use fold by indentation
+set cursorline                   " highlight active cursor line
+
+" If vim is in diff mode, than turn off syntax highlighting, otherwise turn on
+syntax off
+if !&diff
+    syntax on
+    syntax enable
+endif
+
+" If default vimrc file are presented, source it
 if filereadable("/etc/vimrc")
        source /etc/vimrc
 endif
+"----------------------------------------------------------------------------------------------------------------------
 
 "---------------------------------------------VUNDLE-------------------------------------------------------------------
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Be iMproved, required
+set nocompatible
+" Off filetype feature required
+filetype off
 
-" set the runtime path to include Vundle and initialize
+" Set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
+" Alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
+" Let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
 " The following are examples of different formats supported.
@@ -106,40 +116,41 @@ filetype plugin indent on    " required
 "----------------------------------------------------------------------------------------------------------------------
 
 "---------------------------------------SOLARIZED COLORSCHEME----------------------------------------------------------
-let g:solarized_termcolors=16
-let g:solarized_termtrans=1
-let g:solarized_degrade=0
-let g:solarized_bold=1
-let g:solarized_underline=1
-let g:solarized_italic=1
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-"----------------------------------------------------------------------------------------------------------------------
+let g:solarized_termcolors = 16
+let g:solarized_termtrans  = 1
+let g:solarized_degrade    = 0
+let g:solarized_bold       = 1
+let g:solarized_underline  = 1
+let g:solarized_italic     = 1
+let g:solarized_contrast   = "high"
+let g:solarized_visibility = "high"
 
-"---------------------------------------SYNTAX HIGHLIGHTING------------------------------------------------------------
-"If vim is in diff mode, than turn off syntax highlighting, otherwise turn on
-syntax off
-if !&diff
-    syntax on
-    syntax enable
-endif
-"Colorscheme is solarized dark
+" Colorscheme is solarized dark
 set background=dark
 colorscheme solarized
 "----------------------------------------------------------------------------------------------------------------------
 
-"-------------------------------------------INDENT LINE----------------------------------------------------------------
-let g:indentLine_setColors=1    "enable set colors
-let g:indentLine_color_term=239 "for solarized dark base01 (comments)
+"---------------------------------------VIM SYNTAX SIMICS--------------------------------------------------------------
 "----------------------------------------------------------------------------------------------------------------------
 
-set t_Co=256
-set laststatus=2
-let g:airline_powerline_fonts=1
+"---------------------------------------VIM SYNTAX DML-----------------------------------------------------------------
+au! Bufread,BufNewFile *.dml set filetype=dml
+"----------------------------------------------------------------------------------------------------------------------
 
-au! Bufread,BufNewFile *.dml    set filetype=dml
-let g:xml_syntax_folding=1
+"---------------------------------------XML SYNTAX---------------------------------------------------------------------
+let g:xml_syntax_folding = 1
 au FileType xml setlocal foldmethod=syntax
+"----------------------------------------------------------------------------------------------------------------------
+
+"-------------------------------------------INDENT LINE----------------------------------------------------------------
+let g:indentLine_setColors  = 1   " enable set colors
+let g:indentLine_color_term = 239 " for solarized dark base01 (comments)
+"----------------------------------------------------------------------------------------------------------------------
+
+"---------------------------------------VIM AIRLINE--------------------------------------------------------------------
+set laststatus=2                  " display status line always
+let g:airline_powerline_fonts = 1 " integrate with powerline symbols
+"----------------------------------------------------------------------------------------------------------------------
 
 "---------------------------------------YOU COMPLETE ME----------------------------------------------------------------
 " Now turn off plugin
