@@ -100,6 +100,9 @@ Plugin 'davidhalter/jedi-vim'
 " control system.
 Plugin 'mhinz/vim-signify'
 
+" Plugin vim-syntax-simics is Simics syntax highlighting plugin
+Plugin 'rockosov/vim-syntax-simics'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -131,13 +134,6 @@ let g:solarized_visibility = "high"
 
 " Colorscheme is solarized dark
 colorscheme solarized
-"----------------------------------------------------------------------------------------------------------------------
-
-"---------------------------------------VIM SYNTAX SIMICS--------------------------------------------------------------
-"----------------------------------------------------------------------------------------------------------------------
-
-"---------------------------------------VIM SYNTAX DML-----------------------------------------------------------------
-au! Bufread,BufNewFile *.dml set filetype=dml
 "----------------------------------------------------------------------------------------------------------------------
 
 "---------------------------------------XML SYNTAX---------------------------------------------------------------------
