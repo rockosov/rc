@@ -26,7 +26,7 @@ ZSH_THEME="agnoster"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -45,12 +45,43 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history-substring-search zsh-syntax-highlighting)
+plugins=(git history-substring-search zsh-syntax-highlighting colorize colored-man)
 
 # Zsh highlighters
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor line)
 
+# Better zsh-syntax-highlighting colors
+# Thanks to https://github.com/nviennot/zsh-config
+ZSH_HIGHLIGHT_STYLES+=(
+    default                       'none'
+    unknown-token                 'fg=red,bold'
+    reserved-word                 'fg=yellow'
+    alias                         'fg=none,bold'
+    builtin                       'fg=none,bold'
+    function                      'fg=none,bold'
+    command                       'fg=none,bold'
+    hashed-command                'fg=none,bold'
+    path                          'fg=cyan'
+    globbing                      'fg=cyan'
+    history-expansion             'fg=blue'
+    single-hyphen-option          'fg=magenta'
+    double-hyphen-option          'fg=magenta'
+    back-quoted-argument          'fg=magenta,bold'
+    single-quoted-argument        'fg=green'
+    double-quoted-argument        'fg=green'
+    dollar-double-quoted-argument 'fg=cyan'
+    back-double-quoted-argument   'fg=cyan'
+    assign                        'none'
+)
+
 source $ZSH/oh-my-zsh.sh
+
+# Setup ls colors
+LS_COLORS='no=00;32:fi=00:di=00;34:ln=01;36:pi=04;33:so=01;35:bd=33;04:cd=33;04:or=31;01:ex=00;32:*.rtf=00;33:*.txt=00;33:*.html=00;33:*.doc=00;33:*.pdf=00;33:*.ps=00;33:*.sit=00;31:*.hqx=00;31:*.bin=00;31:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.deb=00;31:*.dmg=00;36:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.ppm=00;35:*.tga=00;35:*.xbm=00;35:*.xpm=00;35:*.tif=00;35:*.mpg=00;37:*.avi=00;37:*.gl=00;37:*.dl=00;37:*.mov=00;37:*.mp3=00;35:'
+export LS_COLORS
+
+# Use setupped ls colors with auto completion
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # User configuration
 
