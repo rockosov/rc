@@ -81,7 +81,7 @@ source $ZSH/oh-my-zsh.sh
 export LS_COLORS
 
 # Color listing for dircolors GNU
-eval $(dircolors ./dircolors-solarized/dircolors.256dark)
+eval $(dircolors `dirname $0`/dircolors-solarized/dircolors.256dark)
 
 # Use setupped ls colors with auto completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
