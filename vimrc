@@ -103,6 +103,10 @@ Plugin 'mhinz/vim-signify'
 " Plugin vim-syntax-simics is Simics syntax highlighting plugin
 Plugin 'rockosov/vim-syntax-simics'
 
+" Plugin vim-arduino-syntax is syntax file and get syntax highlighting for Arduino functions
+" in vim.
+Plugin 'sudar/vim-arduino-syntax'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
