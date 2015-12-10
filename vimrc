@@ -16,6 +16,7 @@ set mousehide                    " auto hide mouse
 set foldmethod=indent            " use fold by indentation
 set cursorline                   " highlight active cursor line
 set t_Co=256                     " enable 256 colors
+set colorcolumn=80               " display vertical line at 80 columns
 
 " If vim is in diff mode, than turn off syntax highlighting, otherwise turn on
 syntax off
@@ -93,7 +94,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'Shougo/neocomplete'
 
 " Plugin jedi-vim is a VIM binding to the autocompletion library Jedi.
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 
 " Plugin Vim Signify is a quite unobtrusive plugin. It uses signs to indicate
 " added, modified and removed lines based on data of an underlying version
@@ -146,8 +147,10 @@ au FileType xml setlocal foldmethod=syntax
 "----------------------------------------------------------------------------------------------------------------------
 
 "-------------------------------------------INDENT LINE----------------------------------------------------------------
-let g:indentLine_setColors  = 1   " enable set colors
-let g:indentLine_color_term = 239 " for solarized dark base01 (comments)
+let g:indentLine_setColors           = 1   " enable set colors
+let g:indentLine_color_term          = 239 " for solarized dark base01 (comments)
+let g:indentLine_leadingSpaceEnabled = 1   " enable showing leading spaces by default
+let g:indentLine_leadingSpaceChar    = '.' " leading space character
 "----------------------------------------------------------------------------------------------------------------------
 
 "---------------------------------------VIM AIRLINE--------------------------------------------------------------------
@@ -224,11 +227,11 @@ let g:neocomplete#enable_auto_select = 1
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
-autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -261,7 +264,7 @@ let g:jedi#auto_initialization = 0
 let g:signify_update_on_bufenter = 0
 
 " VCS list
-let g:signify_vcs_list = ['svn']
+let g:signify_vcs_list = ['svn', 'git']
 
 " Additionally trigger sign updates in normal or insert mode after 'updatetime'
 " miliseconds without any keypresses. This fires only once between keypresses,
