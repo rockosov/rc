@@ -13,7 +13,7 @@ set tabstop=4                    " backspace number in the <Tab> at using retab
 set expandtab                    " use backspaces instead <Tab>
 set autochdir                    " auto change directory in the new window or tab
 set mousehide                    " auto hide mouse
-set foldmethod=indent            " use fold by indentation
+set foldmethod=syntax            " use fold by syntax
 set cursorline                   " highlight active cursor line
 set t_Co=256                     " enable 256 colors
 set colorcolumn=80               " display vertical line at 80 columns
