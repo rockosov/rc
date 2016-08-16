@@ -69,7 +69,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'Valloric/YouCompleteMe'
 
 " Vim-airline
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+
+" Vim-airline themes
+Plugin 'vim-airline/vim-airline-themes'
 
 " Plugin 'Yggdroot/indentLine'
 Plugin 'Yggdroot/indentLine'
