@@ -111,6 +111,12 @@ Plugin 'rockosov/vim-syntax-simics'
 " in vim.
 Plugin 'sudar/vim-arduino-syntax'
 
+" Speed up Vim by updating folds only when called-for
+Plugin 'Konfekt/FastFold'
+
+" Fancy fold texts
+Plugin 'Konfekt/FoldText'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
