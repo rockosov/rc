@@ -17,6 +17,7 @@ set foldmethod=syntax            " use fold by syntax
 set cursorline                   " highlight active cursor line
 set t_Co=256                     " enable 256 colors
 set colorcolumn=80               " display vertical line at 80 columns
+"set cscoperelative               " use absolute path for cscope ?? Generate with absolute path???
 
 " If vim is in diff mode, than turn off syntax highlighting, otherwise turn on
 syntax off
@@ -66,16 +67,13 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 
 " Plugin YouCompleteMe: a code-completion engine for Vim
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 " Vim-airline
 Plugin 'vim-airline/vim-airline'
 
 " Vim-airline themes
 Plugin 'vim-airline/vim-airline-themes'
-
-" Plugin 'Yggdroot/indentLine'
-Plugin 'Yggdroot/indentLine'
 
 " Plugin DirDiff
 Plugin 'vim-scripts/DirDiff.vim'
@@ -117,6 +115,20 @@ Plugin 'Konfekt/FastFold'
 " Fancy fold texts
 Plugin 'Konfekt/FoldText'
 
+" Plugin 'Yggdroot/indentLine'
+Plugin 'Yggdroot/indentLine'
+
+" This plugin aims to provide the ability to change the cursor when entering
+" Vim's insert mode on terminals that support it. Currently, that's limited to
+" iTerm, Konsole, and xterm is partially supported (creates an underline
+" cursor instead of line, by default).
+Plugin 'jszakmeister/vim-togglecursor'
+
+" Plugin 'rockosov/cscope_maps'
+Plugin 'rockosov/cscope_maps'
+
+Plugin 'vim-scripts/hex.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -144,10 +156,17 @@ let g:solarized_bold       = 1
 let g:solarized_underline  = 1
 let g:solarized_italic     = 1
 let g:solarized_contrast   = "high"
-let g:solarized_visibility = "high"
 
 " Colorscheme is solarized dark
 colorscheme solarized
+
+" Switch on trailing spaces
+set list
+set listchars=tab:▸\ ,eol:¬,space:.  "
+
+" Custom visibility
+hi! SpecialKey cterm=NONE term=NONE ctermfg=239 ctermbg=NONE
+hi! NonText cterm=NONE term=NONE ctermfg=239 ctermbg=NONE
 "----------------------------------------------------------------------------------------------------------------------
 
 "---------------------------------------XML SYNTAX---------------------------------------------------------------------
@@ -155,12 +174,9 @@ let g:xml_syntax_folding = 1
 au FileType xml setlocal foldmethod=syntax
 "----------------------------------------------------------------------------------------------------------------------
 
-"-------------------------------------------INDENT LINE----------------------------------------------------------------
 let g:indentLine_setColors           = 1   " enable set colors
 let g:indentLine_color_term          = 239 " for solarized dark base01 (comments)
-let g:indentLine_leadingSpaceEnabled = 1   " enable showing leading spaces by default
-let g:indentLine_leadingSpaceChar    = '.' " leading space character
-"----------------------------------------------------------------------------------------------------------------------
+let g:indentLine_faster              = 1
 
 "---------------------------------------VIM AIRLINE--------------------------------------------------------------------
 set laststatus=2                  " display status line always
@@ -175,6 +191,13 @@ let g:loaded_youcompleteme = 1
 "---------------------------------------NEOCOMPLETE--------------------------------------------------------------------
 " Use neocomplete
 let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#auto_completion_start_length = 1
+let g:neocomplete#sources#buffer#cache_limit_size = 500000
+let g:neocomplete#data_directory = $HOME.'/.vim/cache/neocompl'
+let g:neocomplete#min_keyword_length = 3
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_fuzzy_completion = 1
+let g:neocomplete#enable_refresh_always = 1
 
 " Use smartcase
 let g:neocomplete#enable_smart_case = 1
@@ -290,5 +313,17 @@ let g:signify_line_highlight = 0
 " hunk jumping
 nmap <leader>]c <plug>(signify-next-hunk)
 nmap <leader>[c <plug>(signify-prev-hunk)
+"----------------------------------------------------------------------------------------------------------------------
+
+"--------------------------------------CSCOPE--------------------------------------------------------------------------
+" Hitting CTRL-# before the search type does a tab split
+nmap <C-[>s :tab cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-[>g :tab cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-[>c :tab cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-[>t :tab cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-[>e :tab cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-[>f :tab cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-[>i :tab cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-[>d :tab cs find d <C-R>=expand("<cword>")<CR><CR>
 "----------------------------------------------------------------------------------------------------------------------
 
