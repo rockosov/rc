@@ -48,6 +48,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(zsh-syntax-highlighting
          history-substring-search
          colorize
+         git
          colored-man)
 
 source $ZSH/oh-my-zsh.sh
