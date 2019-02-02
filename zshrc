@@ -81,7 +81,14 @@ ZSH_HIGHLIGHT_STYLES+=(
 # export LS_COLORS
 
 # Color listing for dircolors GNU
-eval $(dircolors `dirname $0`/dircolors-solarized/dircolors.256dark)
+case `uname` in
+    Darwin)
+        eval $(gdircolors `dirname $0`/dircolors-solarized/dircolors.256dark)
+    ;;
+    Linux)
+        eval $(dircolors `dirname $0`/dircolors-solarized/dircolors.256dark)
+    ;;
+esac
 
 # Use setupped ls colors with auto completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
