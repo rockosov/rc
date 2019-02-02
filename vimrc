@@ -129,6 +129,9 @@ Plugin 'rockosov/cscope_maps'
 
 Plugin 'vim-scripts/hex.vim'
 
+" Plugin for Markdown Preview
+Plugin 'JamshedVesuna/vim-markdown-preview'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -325,5 +328,9 @@ nmap <C-[>e :tab cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-[>f :tab cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-[>i :tab cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-[>d :tab cs find d <C-R>=expand("<cword>")<CR><CR>
+"----------------------------------------------------------------------------------------------------------------------
+
+"---------------------------------------MARKDOWN PREVIEW---------------------------------------------------------------
+let vim_markdown_preview_github=1
 "----------------------------------------------------------------------------------------------------------------------
 
