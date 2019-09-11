@@ -129,6 +129,8 @@ Plugin 'rockosov/cscope_maps'
 
 Plugin 'vim-scripts/hex.vim'
 
+Plugin 'fidian/hexmode'
+
 " Plugin for Markdown Preview
 Plugin 'JamshedVesuna/vim-markdown-preview'
 
