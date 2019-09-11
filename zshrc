@@ -49,6 +49,7 @@ plugins=(zsh-syntax-highlighting
          history-substring-search
          colorize
          git
+         svn
          colored-man)
 
 source $ZSH/oh-my-zsh.sh
